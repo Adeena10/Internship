@@ -1,0 +1,26 @@
+import os
+import pathlib
+import shutil
+
+# Define file formats and their respective categories
+fileFormat = {
+    "Picture": [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".tiff", ".webp", ".svg", ".heic", ".raw"],
+    "Video": [".mp4", ".avi", ".mkv", ".mov", ".wmv", ".flv", ".webm", ".mpeg", ".3gp", ".m4v"],
+    "Documents": [".pdf", ".doc", ".docx", ".txt", ".xls", ".xlsx", ".csv", ".ppt", ".pptx", ".rtf"],
+    "Audio": [".mp3", ".wav", ".aac", ".flac", ".ogg", ".wma", ".m4a", ".alac", ".aiff", ".opus"],
+    "Compressed": [".zip", ".rar", ".7z", ".tar", ".gz", ".bz2", ".xz"],
+}
+
+# Get keys (folder names) and values (formats)
+Filetype = list(fileFormat.keys())
+fileFormats = list(fileFormat.values())
+
+# Folder for existing directories
+existing_folders_dir = "Folders"
+if not os.path.isdir(existing_folders_dir):
+    os.mkdir(existing_folders_dir)
+
+# Scan the current directory
+for file in os.scandir():
+    fileName = pathlib.Path(file)
+    
